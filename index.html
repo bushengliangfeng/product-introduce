@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新点智能胸牌产品介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00a8ff;
+            --secondary: #0097e6;
+            --accent: #00d2d3;
+            --dark: #2f3640;
+            --light: #f5f6fa;
+            --text: #dcdde1;
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: #0f0f1a;
+            overflow-x: hidden;
+        }
+
+        /* 科技感背景 */
+        .tech-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(to bottom right, rgba(0,0,0,0.9), rgba(0,0,0,0.95)),
+                url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgNDAgMTAgTSAxMCAwIEwgMTAgNDAgTSAwIDIwIEwgNDAgMjAgTSAyMCAwIEwgMjAgNDAgTSAwIDMwIEwgNDAgMzAgTSAzMCAwIEwgMzAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzE5MTkyOSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+');
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* 标题样式 */
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin: 2em 0 1em;
+            color: var(--light);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            text-shadow: 0 0 10px rgba(0,168,255,0.5);
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: var(--primary);
+            margin: 1.5em 0 1em;
+            padding-left: 20px;
+            border-left: 4px solid var(--accent);
+            background: linear-gradient(90deg, rgba(0,168,255,0.1), transparent);
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--accent);
+            margin: 1em 0;
+        }
+
+        /* 内容样式 */
+        p {
+            color: var(--text);
+            margin: 1em 0;
+            line-height: 1.8;
+            text-indent: 2em;
+        }
+
+        /* 视频容器 */
+        .video-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 2em auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,168,255,0.2);
+            position: relative;
+        }
+
+        .video-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px solid var(--primary);
+            border-radius: 10px;
+            animation: borderGlow 2s infinite;
+        }
+
+        @keyframes borderGlow {
+            0% { box-shadow: 0 0 10px var(--primary); }
+            50% { box-shadow: 0 0 20px var(--accent); }
+            100% { box-shadow: 0 0 10px var(--primary); }
+        }
+
+        video {
+            width: 100%;
+            display: block;
+        }
+
+        /* 图片网格 */
+        .image-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 2em 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .image-container img:hover {
+            transform: scale(1.05);
+        }
+
+        /* 列表样式 */
+        ul {
+            list-style: none;
+            padding-left: 2em;
+            color: var(--text);
+        }
+
+        ul li {
+            margin: 0.8em 0;
+            position: relative;
+        }
+
+        ul li::before {
+            content: '▹';
+            position: absolute;
+            left: -1.5em;
+            color: var(--primary);
+        }
+
+        /* 下载链接 */
+        .download-link {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            margin: 1em 0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-link::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .download-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,168,255,0.3);
+        }
+
+        /* 特性卡片 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 2em 0;
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,168,255,0.2);
+            border-color: var(--primary);
+        }
+
+        /* 动画效果 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 滚动条样式 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+
+        /* 科技感装饰元素 */
+        .tech-line {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--primary), transparent);
+            opacity: 0.2;
+        }
+
+        .tech-circle {
+            position: fixed;
+            border-radius: 50%;
+            border: 1px solid var(--primary);
+            opacity: 0.1;
+        }
+
+        .tech-circle:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            width: 200px;
+            height: 200px;
+        }
+
+        .tech-circle:nth-child(2) {
+            bottom: 30%;
+            right: 15%;
+            width: 150px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tech-bg"></div>
+    <div class="tech-line"></div>
+    <div class="tech-circle"></div>
+    <div class="tech-circle"></div>
+
+    <div class="container">
+        <h1>新点智能胸牌产品介绍</h1>
+
+        <div class="video-container fade-in">
+            <video src="videos/智能胸牌系统整体介绍.mp4" controls width="800" height="450"></video>
+        </div>
+
+        <section class="fade-in">
+            <h2>一. 产品概述</h2>
+            <p>新点智能胸牌（Expert Smart Recording Badge，以下简称"智能胸牌"）是一款集成了录音、轨迹定位、佩戴检测以及一键呼叫的智能化产品。用于评标区内对专家言行进行多维度管理，依据智能胸牌提供的实时录音以及专家行为轨迹，结合配套服务平台，实现评标区内人员在评标过程中全方位监管，保障评标活动的公平公正。</p>
+            <p>智能胸牌为交易中心客户提供场地数字化、流程标准化、监管无人化的场地服务标准化能力，帮助中心更高效、多维度地的对评标区内人员的活动进行合理有效的监督，助力公共资源交易中心数字化、智能化转型。</p>
+        </section>
+
+        <section class="fade-in">
+            <h2>二. 产品架构</h2>
+            <p>智能胸牌ESRB的产品架构由智能胸牌及配套的硬件支撑设备、应用服务平台组成。</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>硬件产品</h3>
+                    <ul>
+                        <li>智能胸牌</li>
+                        <li>智能收发卡终端</li>
+                        <li>人员轨迹配套硬件及无线网络系统</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3>应用服务平台</h3>
+                    <ul>
+                        <li>评标区不见面评标管控系统</li>
+                        <li>可作为总控或数字见证系统的功能模块</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="image-container fade-in">
+                <img src="images/2025-04-11-16-24-30.png" alt="智能胸牌硬件图1">
+                <img src="images/2025-04-11-16-24-38.png" alt="智能胸牌硬件图2">
+                <img src="images/2025-04-11-16-25-02.png" alt="智能胸牌硬件图3">
+                <img src="images/2025-04-11-16-25-13.png" alt="智能胸牌硬件图4">
+            </div>
+        </section>
+
+        <section class="fade-in">
+            <h2>三. 产品能力</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>高精度定位</h3>
+                    <p>基于UWB（Ultra-Wideband）无线通信技术，实现高精度（误差不超过30厘米）定位，具有实时性、低延迟、多目标以及抗干扰等优点。</p>
+                </div>
+                <div class="feature-card">
+                    <h3>佩戴检测</h3>
+                    <p>智能胸牌ESRB内置六轴陀螺仪对佩戴者运动姿态进行动态分析、实时演算，对未正确佩戴人员进行实时提醒，确保数据真实有效。</p>
+                </div>
+                <div class="feature-card">
+                    <h3>实时录音</h3>
+                    <p>智能胸牌ESRB内置高灵敏全向麦克风，对佩戴者周围音频进行采集，支持音频流与音频文件两种格式传输。</p>
+                </div>
+                <div class="feature-card">
+                    <h3>预警检测</h3>
+                    <p>基于强大的算法引擎，通过对佩戴者轨迹数据进行动态分析，精准识别违规行为，实时向应用服务平台进行预警推送。</p>
+                </div>
+                <div class="feature-card">
+                    <h3>持久续航</h3>
+                    <p>内置大容量聚合锂电池，支持最低10小时的运行续航，满足一天连续评标。</p>
+                </div>
+                <div class="feature-card">
+                    <h3>大容量存储</h3>
+                    <p>智能胸牌ESRB内置16GB存储，支持最长48小时录音文件离线存储（录音文件上传成功后自动删除）。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="fade-in">
+            <h2>四. 产品优势</h2>
+            <h3>4.1 给客户带来了什么价值?</h3>
+            <div class="feature-card">
+                <ul>
+                    <li>符合场地管理以及见证相关的政策要求；</li>
+                    <li>胸牌拥有自动预警功能，当专家进行了违规行为（如发生未佩戴胸牌或违规接触时），胸牌能够自动通过语音和振动进行提醒，及时中止专家的违规行为，为中心规避了违规事件的风险；</li>
+                    <li>相比人工手动发卡，智能胸牌可以通过终端进行专家自助收发。中心不需要安排专职人员进行人工发放，并且智能支持在终端内充电，减少场地工作人员的日常维护工作量；</li>
+                    <li>智能胸牌可以与监控视频进行联动展示专家的轨迹轨迹信息、录音以及周围的环境监控，让中心的见证监督人员知道专家"去了哪里？"、"干了什么？"以及"说了什么"，提高中心对专家的行为监管能力；</li>
+                    <li>胸牌配备了陀螺仪，实时检测专家是否佩戴了胸牌，保证胸牌采集的数据有效；</li>
+                </ul>
+            </div>
+
+            <h3>4.2 相比与友商(竞品)有什么优势?</h3>
+            <div class="feature-card">
+                <ul>
+                    <li>友商主流的室内定位方案是通过监控摄像头捕捉人脸绘制人员轨迹，相比监控视频定位方案，UWB室内定位精度更高（能够实时的知道专家的具体位置，而摄像头的方案只能知晓专家在哪个摄像头中出现）、稳定性更好且不易受到干扰；</li>
+                    <li>友商的定位方案存在监管盲区，例如走廊尽头、拐角以及洗手间等区域，而智能胸牌能够实现评标区的全覆盖监管；</li>
+                    <li>通过摄像头捕获人脸的视觉方案，存在专家因为低头、侧脸等方式导致未定位到该人员的情况，最终定位的数据不准、预警信息不对等情况；</li>
+                    <li>摄像头的方案对于声音的获取存在一定难度，大部分是通过监控摄像头搭配拾音器来实现，但是对于一些嘈杂或者声音比较低的情况下，无法清晰将专家说的话录制下来，且无法区别是哪个专家说的。</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // 滚动动画
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        fadeElements.forEach(element => {
+            observer.observe(element);
+        });
+
+        // 动态背景效果
+        document.addEventListener('mousemove', (e) => {
+            const circles = document.querySelectorAll('.tech-circle');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            circles.forEach((circle, index) => {
+                const offset = index * 20;
+                circle.style.transform = `translate(${x * offset}px, ${y * offset}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
