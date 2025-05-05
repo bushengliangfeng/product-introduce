@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新点智能胸牌产品介绍</title>
+    <style>
+        :root {
+            --primary: #1d1d1f;
+            --secondary: #86868b;
+            --accent: #0066cc;
+            --background: #ffffff;
+            --section-bg: #f5f5f7;
+            --text: #1d1d1f;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -.022em;
+            color: var(--text);
+            background: var(--background);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 标题样式 */
+        h1 {
+            font-size: 56px;
+            line-height: 1.07143;
+            font-weight: 600;
+            letter-spacing: -.005em;
+            text-align: center;
+            margin: 80px auto 20px;
+            color: var(--primary);
+        }
+
+        .headline {
+            font-size: 28px;
+            line-height: 1.10722;
+            font-weight: 400;
+            letter-spacing: .004em;
+            text-align: center;
+            margin: 0 auto 50px;
+            color: var(--secondary);
+            max-width: 800px;
+        }
+
+        h2 {
+            font-size: 48px;
+            line-height: 1.08349;
+            font-weight: 600;
+            letter-spacing: -.003em;
+            color: var(--primary);
+            margin: 80px 0 40px;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 28px;
+            line-height: 1.14286;
+            font-weight: 600;
+            letter-spacing: .007em;
+            color: var(--primary);
+            margin: 40px 0 20px;
+        }
+
+        p {
+            font-size: 19px;
+            line-height: 1.4211;
+            font-weight: 400;
+            letter-spacing: .012em;
+            color: var(--text);
+            margin: 0 auto 20px;
+            text-align: justify;
+            text-indent: 2em;
+        }
+
+        /* 视频容器 */
+        .video-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 60px auto;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            background: var(--card-bg);
+        }
+
+        video {
+            width: 100%;
+            display: block;
+        }
+
+        /* 图片网格 */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .image-grid img {
+            width: 100%;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        /* 功能列表 */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+            padding: 60px 0;
+            background: var(--section-bg);
+            border-radius: 20px;
+        }
+
+        .feature-item {
+            padding: 30px;
+            background: var(--card-bg);
+            border-radius: 18px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .feature-item h4 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .feature-item p {
+            font-size: 17px;
+            line-height: 1.4;
+            color: var(--secondary);
+            margin: 0;
+            text-indent: 0;
+            text-align: left;
+        }
+
+        /* 列表样式 */
+        ul {
+            list-style: none;
+            margin: 20px 0;
+            padding: 0;
+        }
+
+        ul li {
+            font-size: 17px;
+            line-height: 1.5;
+            color: var(--text);
+            margin: 12px 0;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* 章节样式 */
+        section {
+            margin: 80px 0;
+            padding: 0;
+        }
+
+        section.alternate {
+            background: var(--section-bg);
+            padding: 80px 0;
+            margin: 0;
+            width: 100%;
+        }
+
+        /* 动画效果 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.41, 0, 0.175, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 40px;
+                margin: 40px auto 20px;
+            }
+
+            .headline {
+                font-size: 21px;
+                margin: 0 auto 30px;
+            }
+
+            h2 {
+                font-size: 32px;
+                margin: 40px 0 20px;
+            }
+
+            h3 {
+                font-size: 24px;
+            }
+
+            p {
+                font-size: 17px;
+            }
+
+            .image-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .features-grid {
+                padding: 40px 20px;
+            }
+
+            section {
+                margin: 40px 0;
+            }
+
+            section.alternate {
+                padding: 40px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="fade-in">新点智能胸牌</h1>
+        <p class="headline fade-in">重新定义评标区智能化管理</p>
+
+        <div class="video-container fade-in">
+            <video src="videos/智能胸牌系统整体介绍.mp4" controls></video>
+        </div>
+
+        <section class="fade-in">
+            <h2>产品概述</h2>
+            <p>新点智能胸牌（Expert Smart Recording Badge，以下简称"智能胸牌"）是一款集成了录音、轨迹定位、佩戴检测以及一键呼叫的智能化产品。用于评标区内对专家言行进行多维度管理，依据智能胸牌提供的实时录音以及专家行为轨迹，结合配套服务平台，实现评标区内人员在评标过程中全方位监管，保障评标活动的公平公正。</p>
+            <p>智能胸牌为交易中心客户提供场地数字化、流程标准化、监管无人化的场地服务标准化能力，帮助中心更高效、多维度地的对评标区内人员的活动进行合理有效的监督，助力公共资源交易中心数字化、智能化转型。</p>
+        </section>
+
+        <section class="alternate">
+            <div class="container">
+                <h2>产品架构</h2>
+                <p>智能胸牌ESRB的产品架构由智能胸牌及配套的硬件支撑设备、应用服务平台组成。</p>
+                
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <h4>硬件产品</h4>
+                        <ul>
+                            <li>智能胸牌</li>
+                            <li>智能收发卡终端</li>
+                            <li>人员轨迹配套硬件及无线网络系统</li>
+                        </ul>
+                    </div>
+                    <div class="feature-item">
+                        <h4>应用服务平台</h4>
+                        <ul>
+                            <li>评标区不见面评标管控系统</li>
+                            <li>可作为总控或数字见证系统的功能模块</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="image-grid">
+                    <img src="images/2025-04-11-16-24-30.png" alt="智能胸牌硬件图1">
+                    <img src="images/2025-04-11-16-24-38.png" alt="智能胸牌硬件图2">
+                    <img src="images/2025-04-11-16-25-02.png" alt="智能胸牌硬件图3">
+                    <img src="images/2025-04-11-16-25-13.png" alt="智能胸牌硬件图4">
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>产品能力</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h4>高精度定位</h4>
+                    <p>基于UWB技术，实现误差不超过30厘米的精确定位，具备实时性、低延迟及强大的抗干扰能力。</p>
+                </div>
+                <div class="feature-item">
+                    <h4>佩戴检测</h4>
+                    <p>内置六轴陀螺仪，实时分析佩戴状态，确保数据采集的真实有效性。</p>
+                </div>
+                <div class="feature-item">
+                    <h4>实时录音</h4>
+                    <p>内置高灵敏全向麦克风，对佩戴者周围音频进行采集，支持音频流与音频文件双重传输。</p>
+                </div>
+                <div class="feature-item">
+                    <h4>预警检测</h4>
+                    <p>基于强大的算法引擎，通过对佩戴者轨迹数据进行动态分析，精准识别违规行为。</p>
+                </div>
+                <div class="feature-item">
+                    <h4>持久续航</h4>
+                    <p>内置大容量聚合锂电池，支持最低10小时的运行续航，满足一天连续评标。</p>
+                </div>
+                <div class="feature-item">
+                    <h4>大容量存储</h4>
+                    <p>内置16GB存储，支持最长48小时录音文件离线存储，录音文件上传成功后自动删除。</p>
+                </div>
+                <div class="feature-item">
+                    <h4>NFC读写</h4>
+                    <p>采用近距离无线通信技术，内置NFC线圈，可作为IC卡进行读写操作。</p>
+                </div>
+                <div class="feature-item">
+                    <h4>OTA升级</h4>
+                    <p>支持OTA在线固件升级，日志上传，确保系统始终保持最新状态。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="alternate">
+            <div class="container">
+                <h2>产品优势</h2>
+                
+                <div class="feature-item" style="margin-bottom: 30px;">
+                    <h3>客户价值</h3>
+                    <ul>
+                        <li>符合场地管理及见证相关政策要求</li>
+                        <li>智能预警功能，及时防范违规行为</li>
+                        <li>自助收发，降低人力成本</li>
+                        <li>多维监管，保障评标公正</li>
+                        <li>实时检测，确保数据有效性</li>
+                    </ul>
+                </div>
+
+                <div class="feature-item">
+                    <h3>竞争优势</h3>
+                    <ul>
+                        <li>UWB定位，精度更高，稳定性更好</li>
+                        <li>全域覆盖，无监管盲区</li>
+                        <li>持续追踪，不受姿态影响</li>
+                        <li>清晰录音，准确识别说话人</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        fadeElements.forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html> 
