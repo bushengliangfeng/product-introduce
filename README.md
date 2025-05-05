@@ -10,9 +10,9 @@
 
 # 新点智能胸牌产品介绍
 
-- [新点智能胸牌产品介绍PDF下载](files/智能胸牌/新点智能胸牌产品介绍(Epoint-ESRB1.0)V1.3.pdf)
+- [新点智能胸牌产品介绍PDF下载](files/新点智能胸牌产品介绍(Epoint-ESRB1.0)V1.3.pdf)
 
--<video src="videos/智能胸牌/智能胸牌系统整体介绍.mp4" controls width="600" height="400"></video>
+-<video src="videos/智能胸牌系统整体介绍.mp4" controls width="600" height="400"></video>
 
 ## 一. 产品概述
 

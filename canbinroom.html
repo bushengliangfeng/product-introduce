@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新点智能评标舱产品介绍</title>
+    <style>
+        :root {
+            --primary: #1d1d1f;
+            --secondary: #86868b;
+            --accent: #0066cc;
+            --accent-glow: #00a8ff;
+            --background: #ffffff;
+            --section-bg: #f5f5f7;
+            --text: #1d1d1f;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --grid-color: rgba(0, 102, 204, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -.022em;
+            color: var(--text);
+            background: var(--background);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* 科技网格背景 */
+        .tech-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 30px 30px;
+            z-index: -1;
+            opacity: 0.5;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(30px); }
+        }
+
+        /* 浮动圆圈装饰 */
+        .floating-circles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            opacity: 0.1;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        .circle:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .circle:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            right: 15%;
+            animation-delay: -3s;
+        }
+
+        .circle:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            bottom: 10%;
+            left: 20%;
+            animation-delay: -6s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(10px, -10px); }
+            50% { transform: translate(-5px, 5px); }
+            75% { transform: translate(8px, -8px); }
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        /* 标题样式 */
+        h1 {
+            font-size: 56px;
+            line-height: 1.07143;
+            font-weight: 600;
+            letter-spacing: -.005em;
+            text-align: center;
+            margin: 80px auto 20px;
+            color: var(--primary);
+            position: relative;
+            text-shadow: 0 0 30px rgba(0, 102, 204, 0.2);
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
+
+        .headline {
+            font-size: 28px;
+            line-height: 1.10722;
+            font-weight: 400;
+            letter-spacing: .004em;
+            text-align: center;
+            margin: 0 auto 50px;
+            color: var(--secondary);
+            max-width: 800px;
+            background: linear-gradient(120deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: 48px;
+            line-height: 1.08349;
+            font-weight: 600;
+            letter-spacing: -.003em;
+            color: var(--primary);
+            margin: 80px 0 40px;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 28px;
+            line-height: 1.14286;
+            font-weight: 600;
+            letter-spacing: .007em;
+            color: var(--primary);
+            margin: 40px 0 20px;
+        }
+
+        p {
+            font-size: 19px;
+            line-height: 1.4211;
+            font-weight: 400;
+            letter-spacing: .012em;
+            color: var(--text);
+            margin: 0 auto 20px;
+            text-align: justify;
+            text-indent: 2em;
+        }
+
+        /* 视频容器 */
+        .video-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 60px auto;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            background: var(--card-bg);
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
+        }
+
+        .video-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 2px solid var(--accent);
+            border-radius: 18px;
+            opacity: 0.5;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 10px var(--accent); }
+            to { box-shadow: 0 0 20px var(--accent-glow); }
+        }
+
+        video {
+            width: 100%;
+            display: block;
+        }
+
+        /* 图片网格 */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .image-grid img {
+            width: 100%;
+            border-radius: 12px;
+            transition: transform 0.5s ease;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+        }
+
+        .image-grid img:hover {
+            transform: scale(1.05) translateZ(20px);
+        }
+
+        /* 功能列表 */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+            padding: 60px 0;
+            background: var(--section-bg);
+            border-radius: 20px;
+        }
+
+        .feature-item {
+            padding: 30px;
+            background: var(--card-bg);
+            border-radius: 18px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .feature-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-glow));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .feature-item:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-item h4 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .feature-item p {
+            font-size: 17px;
+            line-height: 1.4;
+            color: var(--secondary);
+            margin: 0;
+            text-indent: 0;
+            text-align: left;
+        }
+
+        /* 列表样式 */
+        ul {
+            list-style: none;
+            margin: 20px 0;
+            padding: 0;
+        }
+
+        ul li {
+            font-size: 17px;
+            line-height: 1.5;
+            color: var(--text);
+            margin: 12px 0;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* 章节样式 */
+        section {
+            margin: 80px 0;
+            padding: 0;
+        }
+
+        section.alternate {
+            background: var(--section-bg);
+            padding: 80px 0;
+            margin: 0;
+            width: 100%;
+        }
+
+        /* 动画效果 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.41, 0, 0.175, 1);
+            perspective: 1000px;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0) rotateX(0);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 40px;
+                margin: 40px auto 20px;
+            }
+
+            .headline {
+                font-size: 21px;
+                margin: 0 auto 30px;
+            }
+
+            h2 {
+                font-size: 32px;
+                margin: 40px 0 20px;
+            }
+
+            h3 {
+                font-size: 24px;
+            }
+
+            p {
+                font-size: 17px;
+            }
+
+            .image-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .features-grid {
+                padding: 40px 20px;
+            }
+
+            section {
+                margin: 40px 0;
+            }
+
+            section.alternate {
+                padding: 40px 0;
+            }
+
+            .tech-grid {
+                background-size: 20px 20px;
+            }
+
+            .circle {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 添加科技背景 -->
+    <div class="tech-grid"></div>
+    <div class="floating-circles">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+
+    <div class="container">
+        <h1 class="fade-in">新点智能评标舱</h1>
+        <p class="headline fade-in">打造智慧评标新标准</p>
+
+        <div class="video-container fade-in">
+            <video src="videos/多功能评标舱宣传视频完整版0916.mp4" controls></video>
+        </div>
+
+        <section class="fade-in">
+            <h2>产品概述</h2>
+            <p>新点智能评标舱（BC-M1）是一款专为评标场景打造的智能化评标空间解决方案。它集成了智能门禁、环境监测、智能照明、无纸化评标等多项功能，为评标专家提供安全、舒适、高效的评标环境，同时实现评标过程的智能化管理与监督。</p>
+        </section>
+
+        <section class="alternate">
+            <div class="container">
+                <h2>产品架构</h2>
+                <p>新点智能评标舱（BC-M1）的产品架构由智能评标舱硬件设备、应用服务平台组成。</p>
+                
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <h4>硬件产品</h4>
+                        <ul>
+                            <li>智能评标舱</li>
+                        </ul>
+                    </div>
+                    <div class="feature-item">
+                        <h4>应用服务平台</h4>
+                        <ul>
+                            <li>评标区不见面评标管控系统</li>
+                            <li>可作为总控或数字见证系统的功能模块</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="image-grid">
+                    <img src="images/智能评标舱效果图.png" alt="评标舱硬件图">
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>产品能力</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h4>在线交流</h4>
+                    <p>基于评标舱内的全向麦克风、桌面摄像机等设备，实现专家评委之间的远程交流功能。</p>
+                </div>
+                <div class="feature-item">
+                    <h4>全程监控</h4>
+                    <p>系统可以对评标舱内评标专家评标过程实时监控，满足监督监管要求。</p>
+                </div>
+                <div class="feature-item">
+                    <h4>无人值守</h4>
+                    <p>舱内设备支持定时开关机，实现设备无人值守。</p>
+                </div>
+                <div class="feature-item">
+                    <h4>身份认证</h4>
+                    <p>专家评委可通过人脸识别的方式进入智能评标舱。</p>
+                </div>
+                <div class="feature-item">
+                    <h4>在线评标</h4>
+                    <p>专家评委通过评标舱内的电脑登录到评标系统进行评标。。</p>
+                </div>
+                <div class="feature-item">
+                    <h4>远程呼叫</h4>
+                    <p>专家评委在评标过程中，需要与工作人员和监督人员进行沟通时，可通过评标舱内IP呼叫终端（后端需部署“智能呼叫调度管理机”）与相关人员进行远程语音沟通。</p>
+                </div>
+                <div class="feature-item">
+                    <h4>实时监控</h4>
+                    <p>评标舱内的环境监控会接入到中心的监控系统中，相关监管人员可以在监控大屏中对评标舱内评委专家评标过程实时监控，满足监督监管要求。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="alternate">
+            <div class="container">
+                <h2>产品优势</h2>
+                
+                <div class="feature-item" style="margin-bottom: 30px;">
+                    <h3>客户价值</h3>
+                    <ul>
+                        <li>符合场地管理及见证相关政策要求</li>
+                        <li>分散评标，多维监管，保障评标公正</li>
+                        <li>实时协作交流，保障评标过程流畅顺利</li>
+                    </ul>
+                </div>
+
+                <div class="feature-item">
+                    <h3>竞争优势</h3>
+                    <ul>
+                        <li>设备外观美观大方设计感强：整体机柜设计色调为白色，并采用国标1.5厚度的冷轧钢板，使用精密工业级标准进行加工，金属烤漆，多年色泽依旧，有质感、亮度，不生锈。</li>
+                        <li>简单易用方便：评标舱集成了监控摄像机、评标工作台、门禁、新风系统等多种专用设备，满足评委专家在独立空间内进行不见面评标工作，具有操作简单、使用方便、容易维护等优点.</li>
+                        <li>一体化设计：整体开模生产，由航空铝板、碳塑复合板、高强度真空吸音钢化玻璃等模块构成，隔声板件饰面为复合耐摩擦、抗污染、抗紫外线、防火防潮防水的纳米PP饰面，确保隔声降噪、快速搭建、移动搬迁、安全环保性能。</li>
+                        <li>封闭式静音舱体：封闭式专属空间、集成化舱体，舱内整齐简洁，在实现舱体隔声和舱室声环境指标的同时，还配置了低噪声给排新风系统，减少舱室内外声交互的同时，保证评标过程中不受外界干扰，提高保密性。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        fadeElements.forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html> 
